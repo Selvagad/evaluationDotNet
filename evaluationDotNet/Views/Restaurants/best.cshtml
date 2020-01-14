@@ -1,0 +1,59 @@
+﻿@model IEnumerable<app.data.Model.Restaurant>
+
+@{
+    ViewData["Title"] = "Best";
+}
+
+<h1>Les meilleurs restaurants</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nom
+            </th>
+            <th>
+                N°Téléphone
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Dernière visite
+            </th>
+            <th>
+                Adresse
+            </th>
+            <th>
+                Note
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+var fullAddress = item.address.rue + " " + item.address.zipCode + "," + item.address.ville;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address.rue)
+                @Html.DisplayFor(modelItem => item.address.zipCode)
+                @Html.DisplayFor(modelItem => item.address.ville)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.note.notes)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+﻿@model Note
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Note</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Dernière Visite
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.lastDate)
+        </dd>
+        <dt class = "col-sm-2">
+            Note
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.notes)
+        </dd>
+        <dt class = "col-sm-2">
+            Commentaire
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.comment)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="NoteEdit" asp-route-id="@Model.ID">Modifier</a> |
+    <a asp-action="NoteIndex">Retour à la liste</a>
+</div>

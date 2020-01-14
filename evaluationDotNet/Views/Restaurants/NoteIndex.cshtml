@@ -1,0 +1,49 @@
+﻿@model IEnumerable<app.data.Model.Restaurant>
+
+@{
+    ViewData["Title"] = "NoteIndex";
+}
+
+<h1>Liste des restaurants</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nom
+            </th>
+            <th>
+                Dernière Visite
+            </th>
+            <th>
+                Note
+            </th>
+            <th>
+                Commentaire
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+var fullAddress = item.address.rue + " " + item.address.zipCode + "," + item.address.ville;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.note.lastDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.note.notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.note.comment)
+            </td>
+            <td>
+                <a asp-area="" asp-controller="Restaurants" asp-action="NoteDetails" asp-route-id="@item.note.ID">Modifier la Note</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

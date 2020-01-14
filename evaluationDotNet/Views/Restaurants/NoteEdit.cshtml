@@ -1,0 +1,44 @@
+﻿@model Note
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edition</h1>
+
+<h4>Restaurant</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NoteEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label class="control-label">Dernière Visite</label>
+                <input asp-for="lastDate" class="form-control" />
+                <span asp-validation-for="lastDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Note</label>
+                <input min="0" max="5" asp-for="notes" class="form-control" />
+                <span asp-validation-for="notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Commentaire</label>
+                <textarea MaxLength="255" asp-for="comment" class="form-control"></textarea>
+                <span asp-validation-for="comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sauvegarder" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="NoteIndex">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

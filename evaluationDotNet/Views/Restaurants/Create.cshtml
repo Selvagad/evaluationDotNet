@@ -1,0 +1,79 @@
+﻿@model app.data.Model.Restaurant
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Création</h1>
+
+<h4>Restaurant</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label class="control-label">Nom du restaurant</label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">N° Téléphone</label>
+                <input asp-for="phoneNumber" class="form-control" />
+                <span asp-validation-for="phoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <textarea MaxLength="255" asp-for="comment" class="form-control"></textarea>
+                <span asp-validation-for="comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Adresse</label>
+                <input asp-for="address.rue" class="form-control" />
+                <span asp-validation-for="address.rue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Code Postal</label>
+                <input asp-for="address.zipCode" class="form-control" />
+                <span asp-validation-for="address.zipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ville</label>
+                <input asp-for="address.ville" class="form-control" />
+                <span asp-validation-for="address.ville" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Dernière Visite</label>
+                <input asp-for="note.lastDate" class="form-control" />
+                <span asp-validation-for="note.lastDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Note</label>
+                <input min="0" max="5" asp-for="note.notes" class="form-control" />
+                <span asp-validation-for="note.notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Commentaire</label>
+                <textarea MaxLength="255" asp-for="note.comment" class="form-control"></textarea>
+                <span asp-validation-for="note.comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sauvegarder" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

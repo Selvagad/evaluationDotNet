@@ -1,0 +1,69 @@
+﻿@model IEnumerable<app.data.Model.Restaurant>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste des restaurants</h1>
+
+<p>
+    <a asp-action="Create">Créer un restaurant</a>
+    <a asp-action="ExportDatabase" style="margin-left: 30px">Export</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nom
+            </th>
+            <th>
+                N°Téléphone
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Dernière visite
+            </th>
+            <th>
+                Adresse
+            </th>
+            <th>
+                Note
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+var fullAddress = item.address.rue + " " + item.address.zipCode + "," + item.address.ville;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.note.lastDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address.rue)
+                @Html.DisplayFor(modelItem => item.address.zipCode)
+                @Html.DisplayFor(modelItem => item.address.ville)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.note.notes)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Editer</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
