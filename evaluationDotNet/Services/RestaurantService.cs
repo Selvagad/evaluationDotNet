@@ -62,6 +62,7 @@ namespace evaluationDotNet.Services
 
         public async Task<IEnumerable<Restaurant>> BestResto()
         {
+            _context.Database.EnsureCreated();
             var restaurantList = _context.Restaurants.Include(p => p.address).Include(p => p.note).ToList();
             var best = restaurantList.OrderByDescending(restaurant => restaurant.note.notes ).Take(5);
 
