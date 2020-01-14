@@ -13,16 +13,13 @@
                 Nom
             </th>
             <th>
-                N°Téléphone
+                Adresse
             </th>
             <th>
                 Description
             </th>
             <th>
                 Dernière visite
-            </th>
-            <th>
-                Adresse
             </th>
             <th>
                 Note
@@ -37,19 +34,17 @@ var fullAddress = item.address.rue + " " + item.address.zipCode + "," + item.add
                 @Html.DisplayFor(modelItem => item.name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.phoneNumber)
+                @Html.DisplayFor(modelItem => item.address.rue)
+                @Html.DisplayFor(modelItem => item.address.zipCode)
+                @Html.DisplayFor(modelItem => item.address.ville)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.comment)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.email)
+                @Html.DisplayFor(modelItem => item.note.lastDate)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.address.rue)
-                @Html.DisplayFor(modelItem => item.address.zipCode)
-                @Html.DisplayFor(modelItem => item.address.ville)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.note.notes)
             </td>

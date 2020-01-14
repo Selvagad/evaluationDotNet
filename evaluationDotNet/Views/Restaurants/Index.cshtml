@@ -23,13 +23,10 @@
                 Description
             </th>
             <th>
-                Dernière visite
+                Email
             </th>
             <th>
                 Adresse
-            </th>
-            <th>
-                Note
             </th>
             <th></th>
         </tr>
@@ -48,15 +45,12 @@ var fullAddress = item.address.rue + " " + item.address.zipCode + "," + item.add
                 @Html.DisplayFor(modelItem => item.comment)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.note.lastDate)
+                @Html.DisplayFor(modelItem => item.email)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.address.rue)
                 @Html.DisplayFor(modelItem => item.address.zipCode)
                 @Html.DisplayFor(modelItem => item.address.ville)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.note.notes)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Editer</a> |
